@@ -37,22 +37,22 @@
           this.third.camera.lookAt(0, 0, 0)
 
           // add a simple box
-          this.third.add.box({ y: 2 })
+          this.third.add.box({ y: 4 })
 
           // get the texture and add the ground
 
           this.third.load.texture('grass').then(grass => {
             grass.wrapS = grass.wrapT = 1000 // RepeatWrapping
-            grass.offset.set(0, 0)
-            grass.repeat.set(2, 2)
+            grass.offset.set(1, 0)
+            grass.repeat.set(2, 3)
 
             // BUG: To add shadows to your ground, set transparent = true
-            this.third.physics.add.ground({ width: 20, height: 20, y: 0 }, { phong: { map: grass, transparent: true } })
+            this.third.physics.add.ground({ width: 120, height: 80, y: 10 }, { phong: { map: grass, transparent: true } })
           })
 
           setTimeout(() => {
             this.scene.restart()
-          }, 5000)
+          }, 500000)
         }
       }
 
@@ -62,8 +62,8 @@
         scale: {
           mode: Phaser.Scale.FIT,
           autoCenter: Phaser.Scale.CENTER_BOTH,
-          width: window.innerWidth * Math.max(1, window.devicePixelRatio / 2),
-          height: window.innerHeight * Math.max(1, window.devicePixelRatio / 2)
+          width: window.innerWidth * Math.max(1, window.devicePixelRatio / 4),
+          height: window.innerHeight * Math.max(1, window.devicePixelRatio / 8)
         },
         scene: [MainScene],
         ...Canvas()
